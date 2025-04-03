@@ -1,6 +1,13 @@
 
 import React, { useEffect, useRef } from 'react';
 
+// Add type declaration for window.adsbygoogle
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 interface AdBannerProps {
   slot: string;
   format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
