@@ -1,9 +1,10 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trophy, Award, Clock, RefreshCcw, Home } from "lucide-react";
+import { Trophy, Award, Clock, RefreshCcw, Home, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { affiliateLinks } from "@/data/affiliateLinks";
+import { AdBanner } from "@/components/AdBanner";
 
 interface ResultPageProps {
   score: number;
@@ -35,6 +36,13 @@ export function ResultPage({
   
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-trivia-purple/10 to-white">
+      {/* Top banner ad */}
+      <AdBanner 
+        slot="results-top-banner" 
+        format="horizontal" 
+        className="w-full max-w-4xl mb-6 bg-white rounded-lg shadow-sm p-1"
+      />
+      
       <Card className="w-full max-w-2xl shadow-lg animate-fade-in">
         <CardHeader className="text-center bg-trivia-purple text-white rounded-t-lg">
           <CardTitle className="text-2xl md:text-3xl flex items-center justify-center gap-2">
@@ -68,8 +76,15 @@ export function ResultPage({
             />
           </div>
           
+          {/* In-content ad */}
+          <AdBanner 
+            slot="results-in-content" 
+            format="rectangle" 
+            className="w-full max-w-md mx-auto my-6 bg-white rounded-lg shadow-sm p-1"
+          />
+          
           <div className="border-t pt-6">
-            <h3 className="text-lg font-semibold mb-4">You might be interested in:</h3>
+            <h3 className="text-lg font-semibold mb-4">Recommended Resources Based on Your Results:</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {affiliateLinks.map((item, index) => (
                 <a 
@@ -81,7 +96,10 @@ export function ResultPage({
                 >
                   <div className="border rounded-lg p-4 h-full transition-all hover:shadow-md hover:border-trivia-purple/50">
                     <img src={item.imageUrl} alt={item.title} className="w-full h-32 object-cover rounded mb-2" />
-                    <h4 className="font-semibold group-hover:text-trivia-purple">{item.title}</h4>
+                    <h4 className="font-semibold group-hover:text-trivia-purple flex items-center">
+                      {item.title} 
+                      <ExternalLink className="w-3 h-3 ml-1 opacity-50 group-hover:opacity-100" />
+                    </h4>
                     <p className="text-sm text-gray-500">{item.description}</p>
                   </div>
                 </a>
@@ -99,6 +117,13 @@ export function ResultPage({
           </Button>
         </CardFooter>
       </Card>
+      
+      {/* Bottom banner ad */}
+      <AdBanner 
+        slot="results-bottom-banner" 
+        format="horizontal" 
+        className="w-full max-w-4xl mt-6 bg-white rounded-lg shadow-sm p-1"
+      />
     </div>
   );
 }

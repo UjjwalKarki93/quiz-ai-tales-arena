@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { motion } from "framer-motion";
 import { Brain, Award, Clock, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AdBanner } from "@/components/AdBanner";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,13 @@ export default function HomePage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-4xl"
       >
+        {/* Top ad banner */}
+        <AdBanner 
+          slot="home-top-banner" 
+          format="horizontal" 
+          className="w-full mb-6 bg-white rounded-lg shadow-sm p-1"
+        />
+        
         <Card className="border-none shadow-lg">
           <CardHeader className="text-center pb-2">
             <CardTitle className="text-4xl md:text-5xl font-bold text-trivia-purple">
@@ -53,6 +61,13 @@ export default function HomePage() {
                 <li>Share your results with friends or try again to beat your score!</li>
               </ol>
             </div>
+            
+            {/* In-content ad */}
+            <AdBanner 
+              slot="home-in-content" 
+              format="rectangle" 
+              className="w-full max-w-md mx-auto my-6 bg-white rounded-lg shadow-sm p-1"
+            />
           </CardContent>
           
           <CardFooter className="flex justify-center pb-8">
