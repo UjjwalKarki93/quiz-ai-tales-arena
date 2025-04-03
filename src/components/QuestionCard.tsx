@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useTimer } from '@/hooks/useTimer';
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import { Question } from '@/data/questions';
 import { cn } from '@/lib/utils';
 
